@@ -1,11 +1,11 @@
 {
-    "name": "goyerv_careers_website",
-    "short_name": "goyerv_careers_website",
+    "name": "Goyerv - Careers",
+    "short_name": "Goyerv - Careers",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Goyerv careers welcomes everyone and anyone that seeks to make a lasting impact globally through technology. Join us!",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

@@ -7,7 +7,7 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
 import 'homepage/presentation/states/homepage_state.dart';
 import 'web_core/internationalization/app_localizations.dart';
 import 'web_core/internationalization/locales_preferences.dart';
@@ -29,21 +29,20 @@ class _GoyervCareersState extends State<GoyervCareers> {
   late LocalesPreferencesImpl localesPreferences;
 
   @override 
-  Future<void> initState() async {
-    localesPreferences = LocalesPreferencesImpl(await SharedPreferences.getInstance());
+  void initState() {
+    // localesPreferences = LocalesPreferencesImpl(await SharedPreferences.getInstance());
     // setState(() {theme = await themeData.getThemeData().then((value) => value.theme!);}); Either the one on top or this. Since this uses setState, the whole app will rebuild that i'm sure or, but for the one on top, not so sure.
-    localesPreferences = LocalesPreferencesImpl(await SharedPreferences.getInstance());
+    // localesPreferences = LocalesPreferencesImpl(await SharedPreferences.getInstance());
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Goyerv',
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: ThemeMode.system,
-      locale: Locale('${localesPreferences.getPlatformLocale().then((value) => value.first)}', '${localesPreferences.getPlatformLocale().then((value) => value.elementAt(1) == ''? null : value.elementAt(1))}'),
+      // locale: Locale('${localesPreferences.getPlatformLocale().then((value) => value.first)}', '${localesPreferences.getPlatformLocale().then((value) => value.elementAt(1) == ''? null : value.elementAt(1))}'),
       supportedLocales: const [
         Locale('en', 'US'),
         Locale('ar', null),
