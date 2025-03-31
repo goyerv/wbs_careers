@@ -11,115 +11,140 @@ import 'dart:ui';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:footer/footer.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../goyerv/presentation/states/languages_state.dart';
-import '../../../homepage/presentation/states/homepage_state.dart';
 import '../../../web_core/global_fields/fields.dart';
-import '../../../web_core/internationalization/app_localizations.dart';
-// import '../../../web_core/internationalization/locales_preferences.dart';
 
 
 
+FocusNode focusNodeOne = FocusNode();
+FocusNode focusNodeTwo = FocusNode();
+FocusNode focusNodeThree = FocusNode();
+FocusNode focusNodeFour = FocusNode();
+FocusNode focusNodeFive = FocusNode();
 
 
-PreferredSizeWidget? appBar(BuildContext context, void Function(void Function() n) setState) {
+Uri uri = Uri.parse('https://www.goyerv.com');
+Uri uriTerms = Uri.parse('https://legal.goyerv.com');
+Uri uriPrivacy = Uri.parse('https://legal.goyerv.com');
+Uri uriDevelopers = Uri.parse('https://www.github.com/goyerv');
+Uri uriResources = Uri.parse('https://resources.goyerv.com');
+Uri uriBulletin = Uri.parse('https://bulletin.goyerv.com');
+
+
+Uri uriGoyerv = Uri.parse('https://www.goyerv.com/goyerv');
+Uri uriFacebook = Uri.parse('https://web.facebook.com/profile.php?id=61573027977193');
+// Remember to update this username
+Uri uriX = Uri.parse('https://x.com/goyervltd');
+Uri uriInstagram = Uri.parse('https://www.instagram.com/goyervltd/');
+Uri uriThreads = Uri.parse('https://www.threads.net/@goyervltd');  
+Uri uriYouTube = Uri.parse('https://www.youtube.com/@Goyerv');  
+Uri uriLinkedIn = Uri.parse('https://www.linkedin.com/company/goyerv/');  
+// TikTok
+
+
+PreferredSizeWidget? appBar(BuildContext context) {
 
   return AppBar(
     automaticallyImplyLeading: false,
-    // leading: InkWell(onTap: () => launchUrl(Uri.parse('https://www.goyerv.com')), child: Image.asset('images/goyerv_logo.png', fit: BoxFit.scaleDown, filterQuality: FilterQuality.high, semanticLabel: AppLocalizations.of(context).translate('Goyerv logo'), matchTextDirection: false)),
-    // title: Text(AppLocalizations.of(context).translate('Community'), style: Theme.of(context).textTheme.titleLarge),
-    title: Row(children: [InkWell(onTap: () => launchUrl(Uri.parse('https://www.goyerv.com')), child: SizedBox(width: 35.0, height: 35.0, child: Image.asset('images/goyerv_logo.png', fit: BoxFit.scaleDown, filterQuality: FilterQuality.high, semanticLabel: AppLocalizations.of(context).translate('Goyerv logo'), matchTextDirection: false))), const SizedBox(width: 10.0), TextButton(onPressed: () => Navigator.of(context).push(MaterialPageRoute<void>(builder: (BuildContext context) => const Homepage())), child: Text(AppLocalizations.of(context).translate('Careers'), style: Theme.of(context).textTheme.titleLarge))]),
-    flexibleSpace: ClipRect(child: BackdropFilter(filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0), child: Container(color: transparent))),
+    leading: InkWell(overlayColor: WidgetStateColor.resolveWith((states) => transparent), onTap: () => launchUrl(Uri.parse('https://www.goyerv.com')), child: Image.asset('images/goyerv_logo.png', fit: BoxFit.scaleDown, filterQuality: FilterQuality.high, semanticLabel: 'Goyerv logo', matchTextDirection: false)),
+    title: Text('Careers', style: Theme.of(context).textTheme.titleLarge),
+    flexibleSpace: ClipRect(child: BackdropFilter(filter: ImageFilter.blur(sigmaX: 40.0, sigmaY: 40.0), child: Container(color: transparent))),
   );
   
 }
 
 
-Widget footer(BuildContext context, void Function(void Function() n) setState) {
-
-  FocusNode focusNodeOne = FocusNode();
-  FocusNode focusNodeTwo = FocusNode();
-  FocusNode focusNodeThree = FocusNode();
-  FocusNode focusNodeFour = FocusNode();
-  FocusNode focusNodeFive = FocusNode();
-  FocusNode focusNodeSix = FocusNode();
-  // SharedPreferences sharedPreferences = await SharedPreferences.getInstance().then((value) => value);
-  // LocalesPreferencesImpl localesPreferences = LocalesPreferencesImpl(sharedPreferences);
-  // String language = await localesPreferences.getLanguageKey();
-  
-  
-  
-  Uri uri = Uri.parse('https://www.goyerv.com');
-  Uri uriTerms = Uri.parse('https://legal.goyerv.com');
-  Uri uriPrivacy = Uri.parse('https://legal.goyerv.com');
-  Uri uriDevelopers = Uri.parse('https://developers.goyerv.com');
-  Uri uriResources = Uri.parse('https://resources.goyerv.com');
-  Uri uriNews = Uri.parse('https://news.goyerv.com');
 
 
-  return Container(
-    alignment: FractionalOffset.bottomCenter,
-    height: MediaQuery.of(context).size.width < 1100? MediaQuery.of(context).size.height * 0.3 : 90,
-    color: Theme.of(context).primaryColorDark,
-    padding: MediaQuery.of(context).size.width < 1100? const EdgeInsets.symmetric(vertical: 5.0, horizontal: 5.0) : const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
-    child: Wrap(
-      alignment: MediaQuery.of(context).size.width < 1100? WrapAlignment.center : WrapAlignment.start,
-      // crossAxisAlignment: MediaQuery.of(context).size.width < 1100? WrapCrossAlignment.start : WrapCrossAlignment.end,
+
+
+
+Footer footer(BuildContext context) {
+
+  double screenWidth = MediaQuery.of(context).size.width;
+
+
+  return Footer(
+    backgroundColor: Theme.of(context).primaryColor,
+    padding: EdgeInsets.all(15.0),
+    child: Column(
       children: [
-        
 
-        Wrap(
-          spacing: MediaQuery.of(context).size.width < 1100? 0.0 : 40.0,
-          alignment: MediaQuery.of(context).size.width < 1100? WrapAlignment.center : WrapAlignment.start,
+        sbhavg,
+
+        Row(
           children: [
-            MediaQuery.of(context).size.width < 1100? Container() : RichText(text: TextSpan(children: [ TextSpan(text: '© ${DateFormat('yyyy').format(DateTime.now())} ', style: Theme.of(context).textTheme.labelSmall),  TextSpan(text: '${AppLocalizations.of(context).translate('Goyerv')} ', recognizer: TapGestureRecognizer()..onTap = () => launchUrl(uri), style: Theme.of(context).textTheme.labelSmall), TextSpan(text: AppLocalizations.of(context).translate('LLC. All rights reserved'), style: Theme.of(context).textTheme.labelSmall), ])),
-
-            MediaQuery.of(context).size.width < 1100? Container() : sbwavg,
             
-            TextButton(onPressed: () => launchUrl(uriTerms), focusNode: focusNodeOne, child: Text(AppLocalizations.of(context).translate('Terms'), style: Theme.of(context).textTheme.labelSmall),),
+            GestureDetector(onTap: () => launchUrl(uriGoyerv), child: SvgPicture.asset('images/Goyerv_logo.svg', semanticsLabel: 'Goyerv logo')),
 
-            TextButton(onPressed: () => launchUrl(uriPrivacy), focusNode: focusNodeTwo, child: Text(AppLocalizations.of(context).translate('Privacy'), style: Theme.of(context).textTheme.labelSmall),),
+            sbhmin,
 
-            TextButton(onPressed: () => launchUrl(uriNews), focusNode: focusNodeThree, child: Text(AppLocalizations.of(context).translate('News'), style: Theme.of(context).textTheme.labelSmall),),
-        
-            TextButton(onPressed: () => launchUrl(uriResources), focusNode: focusNodeFour, child: Text(AppLocalizations.of(context).translate('Resources'), style: Theme.of(context).textTheme.labelSmall),),
+            GestureDetector(onTap: () => launchUrl(uriFacebook), child: SvgPicture.asset('images/Facebook_logo.svg', semanticsLabel: 'Facebook logo')),
 
-            TextButton(onPressed: () => launchUrl(uriDevelopers), focusNode: focusNodeFive, child: Text(AppLocalizations.of(context).translate('Developers'), style: Theme.of(context).textTheme.labelSmall),),
+            sbhmin,
 
-            sbwavg,
+            GestureDetector(onTap: () => launchUrl(uriX), child: SvgPicture.asset('images/X_logo.svg', semanticsLabel: 'X logo')),
+
+            sbhmin,
+
+            GestureDetector(onTap: () => launchUrl(uriInstagram), child: SvgPicture.asset('images/Instagram_logo.svg', semanticsLabel: 'Instagram logo')),
+
+            sbhmin,
+
+            GestureDetector(onTap: () =>launchUrl(uriThreads), child: SvgPicture.asset('images/Threads_logo.svg', semanticsLabel: 'Threads logo')),
+
+            sbhmin,
+
+            GestureDetector(onTap: () => launchUrl(uriYouTube), child: SvgPicture.asset('images/YouTube_logo.svg', semanticsLabel: 'YouTube logo')),
+
+            sbhmin,
+
+            GestureDetector(onTap: () => launchUrl(uriLinkedIn), child: SvgPicture.asset('images/LinkedIn_logo.svg', semanticsLabel: 'LinkedIn logo')),
+
+
+
             
-            MediaQuery.of(context).size.width < 1100? Container() : TextButton(onPressed: () => Navigator.of(context).push(MaterialPageRoute<void>(builder: (BuildContext context) => const Languages())), focusNode: focusNodeSix, style: Theme.of(context).textButtonTheme.style!.copyWith(backgroundColor: MaterialStateProperty.all(transparent)), child: RichText(text: TextSpan(children: [ WidgetSpan(child: Icon(Icons.language, color: Theme.of(context).iconTheme.color, size: 20.0, semanticLabel: AppLocalizations.of(context).translate('Globe(Language) icon'))), WidgetSpan(child: sbwmin,), TextSpan(text: AppLocalizations.of(context).translate('English'), style: Theme.of(context).textTheme.labelSmall), ] ))),
-            
-
-          ]
+          ],
         ),
 
+        sbhmin,
 
-        MediaQuery.of(context).size.width < 1100? sbhmax : Container(),
-      
-
-        MediaQuery.of(context).size.width < 1100? RichText(text: TextSpan(children: [ TextSpan(text: '© ${DateFormat('yyyy').format(DateTime.now())} ', style: Theme.of(context).textTheme.labelSmall),  TextSpan(text: '${AppLocalizations.of(context).translate('Goyerv')} ', recognizer: TapGestureRecognizer()..onTap = () => launchUrl(uri), style: Theme.of(context).textTheme.labelSmall), TextSpan(text: AppLocalizations.of(context).translate('LLC. All rights reserved'), style: Theme.of(context).textTheme.labelSmall), ])) : Container(),
+        RichText(text: TextSpan(children: [ TextSpan(text: '© ${DateFormat('yyyy').format(DateTime.now())} ', style: Theme.of(context).textTheme.labelSmall),  TextSpan(text: 'Goyerv ', recognizer: TapGestureRecognizer()..onTap = () => launchUrl(uriGoyerv), style: Theme.of(context).textTheme.labelSmall), TextSpan(text: 'Ltd. All rights reserved', style: Theme.of(context).textTheme.labelSmall), ])),
 
 
-        MediaQuery.of(context).size.width < 1100? sbhavg : Container(),
+        sbhavg,
 
 
+        Center(
+          child: Wrap(
+            alignment: WrapAlignment.center,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            spacing: 16,
+            runSpacing: 16,
+            direction: screenWidth > 600 ? Axis.horizontal : Axis.vertical,
+            children: [
+              TextButton(onPressed: () => launchUrl(uriTerms), focusNode: focusNodeOne, child: Text('Terms', style: Theme.of(context).textTheme.labelSmall),),
 
-        MediaQuery.of(context).size.width < 1100? TextButton(onPressed: () => Navigator.of(context).push(MaterialPageRoute<void>(builder: (BuildContext context) => const Languages())), focusNode: focusNodeSix, style: Theme.of(context).textButtonTheme.style!.copyWith(backgroundColor: MaterialStateProperty.all(transparent)), child:  Row(mainAxisAlignment: MainAxisAlignment.end, children: [RichText(text: TextSpan(children: [ WidgetSpan(child: Icon(Icons.language, color: Theme.of(context).iconTheme.color, size: 20.0, semanticLabel: AppLocalizations.of(context).translate('Globe(Language) icon'))), WidgetSpan(child: SizedBox(width: 10),), TextSpan(text: AppLocalizations.of(context).translate('English'), style: Theme.of(context).textTheme.labelSmall), ] )), sbwmin ],)) : Container(),
+              TextButton(onPressed: () => launchUrl(uriPrivacy), focusNode: focusNodeTwo, child: Text('Privacy', style: Theme.of(context).textTheme.labelSmall),),
+
+              TextButton(onPressed: () => launchUrl(uriBulletin), focusNode: focusNodeThree, child: Text('Bulletin', style: Theme.of(context).textTheme.labelSmall),),
+
+              TextButton(onPressed: () => launchUrl(uriResources), focusNode: focusNodeThree, child: Text('Resources', style: Theme.of(context).textTheme.labelSmall),),
+
+              TextButton(onPressed: () => launchUrl(uriDevelopers), focusNode: focusNodeThree, child: Text('Developers', style: Theme.of(context).textTheme.labelSmall),),
+
+            ],
+          ),
+        )
 
 
-        
-        
-      
-      ]
-    
-    ),
+      ],
+    )
   );
-
-
 }
 
 

@@ -15,3 +15,5 @@ const folder = Icons.folder;
 const privacy = Icons.privacy_tip;
 const about = Icons.business_outlined;
 const terms = Icons.notes_outlined;
+const chevronUp = Icons.keyboard_arrow_up_rounded;
+const chevronDown = Icons.keyboard_arrow_down_rounded;
