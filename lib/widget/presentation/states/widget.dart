@@ -133,9 +133,9 @@ Footer footer(BuildContext context) {
 
               TextButton(onPressed: () => launchUrl(uriBulletin), focusNode: focusNodeThree, child: Text('Bulletin', style: Theme.of(context).textTheme.labelSmall),),
 
-              TextButton(onPressed: () => launchUrl(uriResources), focusNode: focusNodeThree, child: Text('Resources', style: Theme.of(context).textTheme.labelSmall),),
+              TextButton(onPressed: () => launchUrl(uriResources), focusNode: focusNodeFour, child: Text('Resources', style: Theme.of(context).textTheme.labelSmall),),
 
-              TextButton(onPressed: () => launchUrl(uriDevelopers), focusNode: focusNodeThree, child: Text('Developers', style: Theme.of(context).textTheme.labelSmall),),
+              TextButton(onPressed: () => launchUrl(uriDevelopers), focusNode: focusNodeFive, child: Text('Developers', style: Theme.of(context).textTheme.labelSmall),),
 
             ],
           ),
