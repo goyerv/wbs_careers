@@ -45,7 +45,7 @@ class _GrowthMarketingManagerState extends State<GrowthMarketingManager> {
       appBar: appBar(context),
       body: Container(
         width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.all(MediaQuery.of(context).size.width >= 800? 50.0 : 16.0),
+        color: Theme.of(context).primaryColor,
         child: Title(
           title: "Growth Marketing Manager, B2C Software Applications",
           color: Theme.of(context).primaryColor,
