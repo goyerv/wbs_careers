@@ -47,7 +47,7 @@ class _GrowthMarketingManagerState extends State<GrowthMarketingManager> {
         width: MediaQuery.of(context).size.width,
         color: Theme.of(context).primaryColor,
         child: Title(
-          title: "Growth Marketing Manager, B2C Software Applications",
+          title: "Goyerv Careers - Growth Marketing Manager, B2C Software Applications",
           color: Theme.of(context).primaryColor,
           child: FooterView(
             footer: footer(context),

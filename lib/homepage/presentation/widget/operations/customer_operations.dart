@@ -47,7 +47,7 @@ class _CustomerOperationsState extends State<CustomerOperations> {
         width: MediaQuery.of(context).size.width,
         color: Theme.of(context).primaryColor,
         child: Title(
-          title: "Customer Support Operations",
+          title: "Goyerv Careers - Customer Support Operations",
           color: Theme.of(context).primaryColor,
           child: FooterView(
             footer: footer(context),

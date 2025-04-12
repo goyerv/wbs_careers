@@ -47,7 +47,7 @@ class _FinanceManagerState extends State<FinanceManager> {
         width: MediaQuery.of(context).size.width,
         color: Theme.of(context).primaryColor,
         child: Title(
-          title: "Finance Manager",
+          title: "Goyerv Careers - Finance Manager",
           color: Theme.of(context).primaryColor,
           child: FooterView(
             footer: footer(context),
