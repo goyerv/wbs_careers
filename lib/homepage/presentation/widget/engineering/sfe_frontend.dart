@@ -47,7 +47,7 @@ class _SFEFrontendState extends State<SFEFrontend> {
         width: MediaQuery.of(context).size.width,
         color: Theme.of(context).primaryColor,
         child: Title(
-          title: "Software Engineer, UI/UX",
+          title: "Goyerv Careers - Software Engineer, UI/UX",
           color: Theme.of(context).primaryColor,
           child: FooterView(
             footer: footer(context),
